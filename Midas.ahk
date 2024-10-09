@@ -28,13 +28,58 @@ GameName := "Midas Gold Plus"
     }
 }   
 
+^2::
+{
+    if WinExist(GameName)
+    {
+        Loop
+        {
+            ; Make sure your purchasing is set to Max
+            ; make sure the autoclicker artifact is setup already
+
+            Loop 2
+            {
+                BuyThingUpgrade() ;To make sure we get the buttons
+            }
+
+            AutoclickRock()
+            BuyTopRightBuilding()
+            sleep 10             
+        }
+    }        
+    Else
+    {
+        MsgBox "Midas not open"
+    }
+}   
+
+^3::
+{
+    if WinExist(GameName)
+    {
+        Loop
+        {
+            ; Make sure your purchasing is set to Max
+            ; make sure the autoclicker artifact is setup already
+            Loop 2
+            {
+                BuyThingUpgrade() ;To make sure we get the buttons
+            }
+        }
+    }        
+    Else
+    {
+        MsgBox "Midas not open"
+    }
+}   
+
 Esc::ExitApp  ; Exit script with Escape key
 
 AutoclickRock(loopTimes := 400)
 {
     Loop loopTimes
     {
-        MouseClick "left", 807, 710
+        MouseClick "left", 1060, 750
         sleep 50
     }
 }
@@ -58,12 +103,32 @@ BuyBuildings()
     MouseClick "left", 409, 532 ; Buy Shrine (in case Merchant purchase was not possible)    
 }
 
+BuyTopRightBuilding()
+{
+    sleep 10 
+    MouseClick "left", 1460, 205 ; buy Merchant
+}
+
 BuyUpgrades()
 {
     sleep 10 
     MouseClick "left", 35, 428 ; Press upgrade button
     sleep 10 
     MouseClick "left", 198, 884 ; Buy Max
+}
+
+BuyThingUpgrade()
+{
+    sleep 10 
+    MouseClick "left", 1315, 924 ; first click spell tthing
+    sleep 10 
+    MouseClick "left", 1406, 924 ; Second click spell tthing
+    sleep 10 
+    MouseClick "left", 1470, 924 ; 3rd click spell tthing
+    sleep 10 
+    MouseClick "left", 1541, 924 ; 4th click spell tthing
+    sleep 10 
+    MouseClick "left", 1618, 924 ; 5th click spell tthing
 }
 
 ; PressTheKey: ; subroutine
